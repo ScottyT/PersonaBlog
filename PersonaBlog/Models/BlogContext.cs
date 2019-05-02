@@ -8,8 +8,11 @@ namespace PersonaBlog.Models
 {
     public class BlogContext : DbContext
     {
-        public BlogContext(DbContextOptions<BlogContext> options) : base(options) { }
+        public BlogContext(DbContextOptions<BlogContext> options) : base(options)
+        {
+        }
 
-        public DbSet<BlogContext> Requests { get; set; }
+        public DbSet<RequestsModel> Requests { get; set; }
+        public DbSet<AcceptedRequests> AcceptedRequests { get; set; }
     }
 }
