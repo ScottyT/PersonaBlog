@@ -1,12 +1,14 @@
-﻿using System;
+﻿using PersonaBlog.Repository.Abstraction;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PersonaBlog.Models
 {
-    public class RequestsModel
+    public class RequestsModel : IEntityBase
     {
         [Key]
-        public Guid RequestId { get; set; }
+        public string Id { get; set; }
         public DateTime DateCreated { get; set; }
 
         [Required(ErrorMessage = "Subject is required.")]

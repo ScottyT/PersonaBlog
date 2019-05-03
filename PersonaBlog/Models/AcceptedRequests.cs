@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonaBlog.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,10 +9,8 @@ namespace PersonaBlog.Models
 {
     public class AcceptedRequests
     {
-        [Key]
-        public Guid AcceptedId { get; set; }
         public int Priority { get; set; }
-
+        public string RequestID { get; set; }
         public RequestsModel Request { get; set; }
     }
 }
