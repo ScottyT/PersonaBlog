@@ -1,17 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { render } from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+//import ReactDOM from 'react-dom';
 import App from './App';
+import HomePage from './components/home/HomePage';
 import registerServiceWorker from './registerServiceWorker';
 
-const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
-const rootElement = document.getElementById('root');
+//const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
+//const rootElement = document.getElementById('root');
 
-ReactDOM.render(
-  <BrowserRouter basename={baseUrl}>
-    <App />
-  </BrowserRouter>,
-  rootElement);
+//ReactDOM.render(
+//  <BrowserRouter basename={baseUrl}>
+//    <App />
+//  </BrowserRouter>,
+//  rootElement);
 
-registerServiceWorker();
+//registerServiceWorker();
+
+render(
+	<BrowserRouter>
+		<Route exact path="/" component={HomePage} />
+	</BrowserRouter>,
+	document.getElementById('app')
+);

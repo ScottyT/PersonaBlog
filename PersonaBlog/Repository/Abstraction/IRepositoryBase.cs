@@ -10,7 +10,6 @@ namespace PersonaBlog.Repository.Abstraction
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> AllIncluding(Expression<Func<T, object>>[] includeProperties);
-        T GetById(string id);
         T GetSingle(Expression<Func<T, bool>> predicate);
         void Create(T entity);
         void Update(T entity);
