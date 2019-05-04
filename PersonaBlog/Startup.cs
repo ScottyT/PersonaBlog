@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PersonaBlog.Models;
+using PersonaBlog.Repository;
+using PersonaBlog.Repository.Abstraction;
 
 namespace PersonaBlog
 {
@@ -25,6 +27,7 @@ namespace PersonaBlog
             
             services.AddDbContext<BlogContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the React files will be served from this directory

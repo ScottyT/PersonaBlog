@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonaBlog.Repository.Abstraction
 {
-    public interface IRepositoryBase<T> where T : IEntityBase, new()
+    public interface IRepositoryBase<T> where T : class
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> AllIncluding(Expression<Func<T, object>>[] includeProperties);

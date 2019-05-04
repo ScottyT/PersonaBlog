@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonaBlog.Repository.Abstraction
 {
-    public interface IAcceptedRepository
+    public interface IAcceptedRepository : IRepositoryBase<AcceptedRequests>
     {
     }
 }
