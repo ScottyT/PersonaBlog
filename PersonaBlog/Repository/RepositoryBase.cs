@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PersonaBlog.Repository.Abstraction
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class, IEntityBase, new()
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         private BlogContext _context;
         public RepositoryBase(BlogContext context)
@@ -43,11 +43,6 @@ namespace PersonaBlog.Repository.Abstraction
             return _context.Set<T>().AsEnumerable();
         }
 
-
-        public T GetById(string id)
-        {
-            return _context.Set<T>().FirstOrDefault(x => x.Id == id);
-        }
 
         public T GetSingle(Expression<Func<T, bool>> predicate)
         {
