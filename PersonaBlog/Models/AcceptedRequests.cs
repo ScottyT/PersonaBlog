@@ -1,4 +1,5 @@
 ﻿using PersonaBlog.Repository;
+using PersonaBlog.Repository.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
