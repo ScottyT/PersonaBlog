@@ -78,27 +78,27 @@ export default withAuth(class RegisterPage extends React.Component {
 
 		return (
 			<form onSubmit={this.handleSubmit} className="registration">
-				<div className="form-element">
-					<label>Email:</label>
-					<input type="email" id="email" value={this.state.email}
+				<div className="form-group">
+					<label for="email">Email:</label>
+					<input type="email" className="form-control" id="email" value={this.state.email}
 						onChange={this.handleEmailChange} />
 				</div>
-				<div className="form-element">
-					<label>First Name:</label>
-					<input type="text" id="firstName" value={this.state.firstName}
+				<div className="form-group">
+					<label for="firstName">First Name:</label>
+					<input type="text" className="form-control" id="firstName" value={this.state.firstName}
 						onChange={this.handleFirstNameChange} />
 				</div>
-				<div className="form-element">
-					<label>Last Name:</label>
-					<input type="text" id="lastName" value={this.state.lastName}
+				<div className="form-group">
+					<label for="lastName">Last Name:</label>
+					<input type="text" className="form-control" id="lastName" value={this.state.lastName}
 						onChange={this.handleLastNameChange} />
 				</div>
-				<div className="form-element">
-					<label>Password:</label>
-					<input type="password" id="password" value={this.state.password}
+				<div className="form-group">
+					<label for="password">Password:</label>
+					<input type="password" className="form-control" id="password" value={this.state.password}
 						onChange={this.handlePasswordChange} />
 				</div>
-				<div className="form-actions">
+				<div className="form-group">
 					<input type="submit" id="submit" className="btn btn-primary" value="Register" />
 				</div>
 			</form>
