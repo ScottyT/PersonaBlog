@@ -7,7 +7,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App';
 import config from './app.config';
 import { HomePage } from './components/HomePage';
-import { Layout } from './components/Layout';
+import Layout from './components/Layout';
+import NavMenu from './components/NavMenu';
 import RegisterPage from './components/auth/RegisterPage';
 import registerServiceWorker from './registerServiceWorker';
 import LoginPage from './components/auth/LoginPage';
@@ -29,13 +30,15 @@ const onAuthRequired = ({ history }) => history.push('/login');
 render(
 	<BrowserRouter>
 		<Security issuer={config.issuer} client_id={config.client_id} redirect_uri={config.redirect_uri} onAuthRequired={onAuthRequired}>
-		<Layout>
-			<Route exact path="/" component={HomePage} />
+			<Layout>
+
+				<Route exact path="/" component={HomePage} />
 				<Route path="/register" component={RegisterPage} />
 				<Route path="/login" render={() => <LoginPage baseUrl={config.url} />} />
 				<Route path="/implicit/callback" component={ImplicitCallback} />
 				<SecureRoute path="/profile" component={ProfilePage} />
-		</Layout>
+
+			</Layout>
 		</Security>
 	</BrowserRouter>,
 	document.getElementById('root')

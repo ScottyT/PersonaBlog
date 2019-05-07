@@ -10,6 +10,8 @@ namespace PersonaBlog.Models
 {
     public class AcceptedRequests
     {
+        [Key]
+        public string AcceptedId { get; set; }
         public int Priority { get; set; }
         public string RequestID { get; set; }
         public RequestsModel Request { get; set; }

@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
 
-export default withAuth(class ProfilePage extends React.Comonent {
+export default withAuth(class ProfilePage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

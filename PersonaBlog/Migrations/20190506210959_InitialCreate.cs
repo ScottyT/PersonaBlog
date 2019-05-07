@@ -11,7 +11,7 @@ namespace PersonaBlog.Migrations
                 name: "Requests",
                 columns: table => new
                 {
-                    RequestId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<string>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     Subject = table.Column<string>(nullable: false),
                     Content = table.Column<string>(maxLength: 250, nullable: false),
@@ -19,32 +19,32 @@ namespace PersonaBlog.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Requests", x => x.RequestId);
+                    table.PrimaryKey("PK_Requests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AcceptedRequests",
                 columns: table => new
                 {
-                    AcceptedId = table.Column<Guid>(nullable: false),
+                    AcceptedId = table.Column<string>(nullable: false),
                     Priority = table.Column<int>(nullable: false),
-                    RequestId = table.Column<Guid>(nullable: true)
+                    RequestID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AcceptedRequests", x => x.AcceptedId);
                     table.ForeignKey(
-                        name: "FK_AcceptedRequests_Requests_RequestId",
-                        column: x => x.RequestId,
+                        name: "FK_AcceptedRequests_Requests_RequestID",
+                        column: x => x.RequestID,
                         principalTable: "Requests",
-                        principalColumn: "RequestId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AcceptedRequests_RequestId",
+                name: "IX_AcceptedRequests_RequestID",
                 table: "AcceptedRequests",
-                column: "RequestId");
+                column: "RequestID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

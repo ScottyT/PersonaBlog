@@ -14,5 +14,6 @@ namespace PersonaBlog.Models
 
         public DbSet<RequestsModel> Requests { get; set; }
         public DbSet<AcceptedRequests> AcceptedRequests { get; set; }
+        public DbSet<Registration> Registrations { get; set; }
     }
 }

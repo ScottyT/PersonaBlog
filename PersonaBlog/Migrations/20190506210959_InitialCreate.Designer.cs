@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonaBlog.Models;
@@ -9,34 +10,36 @@ using PersonaBlog.Models;
 namespace PersonaBlog.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20190502210511_InitialCreate")]
+    [Migration("20190506210959_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PersonaBlog.Models.AcceptedRequests", b =>
                 {
-                    b.Property<Guid>("AcceptedId")
+                    b.Property<string>("AcceptedId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Priority");
 
-                    b.Property<Guid?>("RequestId");
+                    b.Property<string>("RequestID");
 
                     b.HasKey("AcceptedId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("RequestID");
 
                     b.ToTable("AcceptedRequests");
                 });
 
             modelBuilder.Entity("PersonaBlog.Models.RequestsModel", b =>
                 {
-                    b.Property<Guid>("RequestId")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("AcceptRequest");
@@ -50,7 +53,7 @@ namespace PersonaBlog.Migrations
                     b.Property<string>("Subject")
                         .IsRequired();
 
-                    b.HasKey("RequestId");
+                    b.HasKey("Id");
 
                     b.ToTable("Requests");
                 });
@@ -59,7 +62,7 @@ namespace PersonaBlog.Migrations
                 {
                     b.HasOne("PersonaBlog.Models.RequestsModel", "Request")
                         .WithMany()
-                        .HasForeignKey("RequestId");
+                        .HasForeignKey("RequestID");
                 });
 #pragma warning restore 612, 618
         }
