@@ -61,12 +61,13 @@ export default withAuth(class RegisterPage extends React.Component {
 			},
 			body: JSON.stringify(this.state)
 		}).then(user => {
-			this.setState({ registered: true });
+			this.setState({ registered: true, sessionToken: user.sessionToken });
 		})
 			.catch(err => console.log);
 	}
 
 	render() {
+		console.log(this.state.sessionToken);
 		if (this.state.sessionToken) {
 			this.props.auth.redirect({ sessionToken: this.state.sessionToken });
 			return null;

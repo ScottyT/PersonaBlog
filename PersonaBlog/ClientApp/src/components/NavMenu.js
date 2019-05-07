@@ -12,17 +12,17 @@ export default withAuth(class NavMenu extends React.Component {
 			authenticated: null,
 			collapsed: null
 		};
-		this.toggleNavbar = this.toggleNavbar.bind(this);
+		//this.toggleNavbar = this.toggleNavbar.bind(this);
 		this.checkAuthentication = this.checkAuthentication.bind(this);
 		this.logout = this.logout.bind(this);
 		this.checkAuthentication();
 	}
 
-	toggleNavbar() {
-		this.setState({
-			collapsed: !this.state.collapsed
-		});
-	}
+	//toggleNavbar() {
+	//	this.setState({
+	//		collapsed: !this.state.collapsed
+	//	});
+	//}
 
 	async checkAuthentication() {
 		const authenticated = await this.props.auth.isAuthenticated();
