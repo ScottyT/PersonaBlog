@@ -25,6 +25,7 @@ export default withAuth(class ProfilePage extends React.Component {
 		return (
 			<section className="user-profile" >
 				<h1>{this.state.user.name}'s Submitted Sessions</h1>
+				<Link to="/requests" className="btn btn-primary">Submit a Request</Link>
 			</section >
 		)
 	}

@@ -1,6 +1,6 @@
 ﻿export default {
-	url: "https://dev-809585.okta.com",
-	issuer: "https://dev-809585.okta.com/oauth2/default",
+	url: "https://dev-616356.okta.com",
+	issuer: "https://dev-616356.okta.com/oauth2/default",
 	redirect_uri: window.location.origin + '/implicit/callback',
-	client_id: "0oajhxgf5sa0N2NB4356"
+	client_id: "0oak4mq22TgM2Hm1B356"
 }

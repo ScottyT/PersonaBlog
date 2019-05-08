@@ -11,16 +11,21 @@ using PersonaBlog.Repository.Abstraction;
 namespace PersonaBlog.Controllers
 {
     [Route("api/[controller]")]
-    public class RequestsController : Controller
+    [ApiController]
+    public class RequestsController : ControllerBase
     {
-        private IRepositoryWrapper _repoWrapper;
+        private readonly IRepositoryWrapper _repoWrapper;
+        public RequestsController(IRepositoryWrapper repoWrapper)
+        {
+            _repoWrapper = repoWrapper;
+        }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
             var requests = _repoWrapper.Requests.GetAll();
 
-            return new string[] { "value1", "value2" };
+            return Ok(requests);
         }
 
         // GET api/<controller>/5
@@ -35,10 +40,11 @@ namespace PersonaBlog.Controllers
         public IActionResult Post([FromBody]RequestsModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
+            model.UserId = User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
             _repoWrapper.Requests.CreateRequest(model);
             _repoWrapper.Save();
-            return CreatedAtAction("RequestById", new { id = model.Id }, model);
+            return Created($"api/requests/{model.Id}", model);
+            //return CreatedAtAction("RequestById", new { id = model.Id }, model);
         }
 
         // PUT api/<controller>/5
