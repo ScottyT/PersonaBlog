@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
 import './NavMenu.css';
 
-export default withAuth(class NavMenu extends React.Component {
+export default withAuth(class NavMenu extends Component {
 	constructor(props) {
 		super(props);
 
@@ -44,7 +44,7 @@ export default withAuth(class NavMenu extends React.Component {
 		const authNav = this.state.authenticated ?
 			<ul className="nav navbar-nav navbar-right">
 				<li className="nav-item">
-					<a class="nav-link" href="javascript:void(0)" onClick={this.logout}>Logout</a>
+					<a className="nav-link" href="javascript:void(0)" onClick={this.logout}>Logout</a>
 				</li>
 				<li className="nav-item"><NavLink tag={Link} className="text-dark" to="/profile">Profile</NavLink></li>
 			</ul> :
@@ -52,7 +52,7 @@ export default withAuth(class NavMenu extends React.Component {
 				<li className="nav-item"><NavLink tag={Link} className="text-dark" to="/login">Login</NavLink></li>
 				<li className="nav-item"><NavLink tag={Link} className="text-dark" to="/register">Register</NavLink></li>
 			</ul>
-			
+
 
 		return (
 			<header>
@@ -61,17 +61,17 @@ export default withAuth(class NavMenu extends React.Component {
 						<NavbarBrand tag={Link} to="/">PersonaBlog</NavbarBrand>
 						<NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
 						<Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-						<ul className="navbar-nav flex-grow">
-							<NavItem>
-								<NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-							</NavItem>
-							{authNav}
+							<ul className="navbar-nav flex-grow">
+								<NavItem>
+									<NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
+								</NavItem>
+								<NavItem>
+									<NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
+								</NavItem>
+								<NavItem>
+									<NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
+								</NavItem>
+								{authNav}
 							</ul>
 						</Collapse>
 					</Container>

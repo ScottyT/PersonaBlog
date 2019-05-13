@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PersonaBlog.Models;
 using PersonaBlog.Repository.Abstraction;
@@ -23,16 +25,10 @@ namespace PersonaBlog.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var requests = _repoWrapper.Requests.GetAll();
+            //var userId = User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
+            var requests = _repoWrapper.Requests.GetAll().ToList();
 
             return Ok(requests);
-        }
-
-        // GET api/<controller>/5
-        [HttpGet("{id}", Name = "RequestById")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST api/<controller>
@@ -40,7 +36,10 @@ namespace PersonaBlog.Controllers
         public IActionResult Post([FromBody]RequestsModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            model.UserId = User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
+            DateTime d = DateTime.UtcNow;
+            var principal = HttpContext.User.Identity as ClaimsIdentity;
+            model.UserId = principal.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
+            model.DateCreated = d;
             _repoWrapper.Requests.CreateRequest(model);
             _repoWrapper.Save();
             return Created($"api/requests/{model.Id}", model);

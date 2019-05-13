@@ -11,6 +11,7 @@ namespace PersonaBlog.Repository.Abstraction
         IEnumerable<T> GetAll();
         IEnumerable<T> AllIncluding(Expression<Func<T, object>>[] includeProperties);
         T GetSingle(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> GetBy(Expression<Func<T, bool>> predicate);
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);

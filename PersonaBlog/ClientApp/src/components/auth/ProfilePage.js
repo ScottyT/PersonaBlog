@@ -1,6 +1,8 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '@okta/okta-react';
+import RequestsListing from '../RequestsListing';
+import RequestListing from '../RequestListing';
 
 export default withAuth(class ProfilePage extends React.Component {
 	constructor(props) {
@@ -26,6 +28,8 @@ export default withAuth(class ProfilePage extends React.Component {
 			<section className="user-profile" >
 				<h1>{this.state.user.name}'s Submitted Sessions</h1>
 				<Link to="/requests" className="btn btn-primary">Submit a Request</Link>
+				
+				<RequestsListing />
 			</section >
 		)
 	}

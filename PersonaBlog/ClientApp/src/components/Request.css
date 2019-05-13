@@ -1,0 +1,9 @@
+﻿body ul {
+	list-style:none;
+}
+body .request {
+	padding:10px;
+	margin:12px;
+	max-width:250px;
+	width:100%;
+}

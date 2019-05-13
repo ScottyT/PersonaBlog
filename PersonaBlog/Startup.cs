@@ -36,7 +36,7 @@ namespace PersonaBlog
             })
             .AddJwtBearer(options =>
             {
-                options.Authority = "https://dev-616356.okta.com/";
+                options.Authority = "https://dev-616356.okta.com/oauth2/default";
                 options.Audience = "api://default";
             });
 

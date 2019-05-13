@@ -37,7 +37,7 @@ class RequestsPage extends React.Component {
 			method: 'POST'
 		})
 			.then(rsp => {
-				if (rsp.status === 200) {
+				if (rsp.status === 201) {
 					this.props.history.push('/profile');
 				}
 			})
@@ -48,7 +48,7 @@ class RequestsPage extends React.Component {
 
 	render() {
 		if (this.state.submitted === true) {
-			<Redirect to="/profile"/>
+			return <Redirect to="/profile" />;
 		}
 		return (
 			<form onSubmit={this.handleSubmit}>
@@ -69,7 +69,7 @@ class RequestsPage extends React.Component {
 						onChange={this.handleContentChange} />
 				</div>
 				<div className="form-actions">
-					<input id="submit" type="submit" value="Submit Request" />
+					<input className="btn btn-primary" id="submit" type="submit" value="Submit Request" />
 				</div>
 			</form>)
 	}

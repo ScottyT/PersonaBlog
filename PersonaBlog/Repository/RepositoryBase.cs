@@ -43,6 +43,11 @@ namespace PersonaBlog.Repository.Abstraction
             return _context.Set<T>().AsEnumerable();
         }
 
+        public IEnumerable<T> GetBy(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().Where(predicate);
+        }
+
         public T GetSingle(Expression<Func<T, bool>> predicate)
         {
             return _context.Set<T>().FirstOrDefault(predicate);
