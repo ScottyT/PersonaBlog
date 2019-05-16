@@ -31,7 +31,7 @@ render(
 	<BrowserRouter>
 		<Security issuer={config.issuer} client_id={config.client_id} redirect_uri={config.redirect_uri} onAuthRequired={onAuthRequired}>
 			<Layout>
-				<SecureRoute exact path="/" component={HomePage} />
+				<Route exact path="/" component={HomePage} />
 				<Route path="/register" component={RegisterPage} />
 				<Route path="/login" render={() => <LoginPage baseUrl={config.url} />} />
 				<Route path="/implicit/callback" component={ImplicitCallback} />

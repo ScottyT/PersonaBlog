@@ -12,7 +12,7 @@ using PersonaBlog.Repository.Abstraction;
 
 namespace PersonaBlog.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class RequestsController : ControllerBase
     {
@@ -23,6 +23,7 @@ namespace PersonaBlog.Controllers
         }
         // GET: api/<controller>
         [HttpGet]
+        [ActionName("GetRequests")]
         public IActionResult Get()
         {
             //var userId = User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
@@ -33,6 +34,7 @@ namespace PersonaBlog.Controllers
 
         // POST api/<controller>
         [HttpPost]
+        [ActionName("PostRequests")]
         public IActionResult Post([FromBody]RequestsModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -46,12 +48,41 @@ namespace PersonaBlog.Controllers
             //return CreatedAtAction("RequestById", new { id = model.Id }, model);
         }
 
+        [HttpPost]
+        [ActionName("Accepted")]
+        public IActionResult RequestAccepted([FromBody]RequestsModel model)
+        {
+            var request = _repoWrapper.Requests.GetSingle(r => r.Id == model.Id);
+            //var accepted = model.AcceptRequest;
+            //if (!accepted)
+            //{
+            //    return BadRequest();
+            //}
+            _repoWrapper.Accepted.RequestAccepted(new AcceptedRequests
+            {
+                Priority = 3,
+                Request = request,
+                RequestID = request.Id
+            });
+            //_repoWrapper.Requests.UpdateRequest(request);
+            
+            _repoWrapper.Save();
+            return Created($"api/requests/{ model.Id}", model);
+            //var acceptedId = Guid.NewGuid().ToString();
+            //var acceptedRequest = new AcceptedRequests
+            //{
+            //    AcceptedId = acceptedId,
+            //    Priority = 3,
+            //    Request = model
+            //};
+            
+        }
         // PUT api/<controller>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
-
+        
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

@@ -11,7 +11,7 @@ export default withAuth(class RequestsListing extends React.Component {
 	}
 
 	async getRequests() {
-		fetch('/api/requests', {
+		fetch('/api/requests/GetRequests', {
 			headers: {
 				Authorization: 'Bearer ' + this.props.auth.getAccessToken()
 			}
@@ -34,7 +34,8 @@ export default withAuth(class RequestsListing extends React.Component {
 				{this.state.requests.map(request =>
 					<Request key={request.id}
 						id={request.id}
-						request={request} />)}
+						request={request}
+						/>)}
 			</ul>)
 	}
 })

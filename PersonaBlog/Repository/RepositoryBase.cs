@@ -55,7 +55,7 @@ namespace PersonaBlog.Repository.Abstraction
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
         }
     }
 }

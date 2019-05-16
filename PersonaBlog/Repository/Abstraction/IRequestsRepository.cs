@@ -9,5 +9,6 @@ namespace PersonaBlog.Repository.Abstraction
     public interface IRequestsRepository : IRepositoryBase<RequestsModel>
     {
         void CreateRequest(RequestsModel request);
+        void UpdateRequest(RequestsModel request);
     }
 }

@@ -15,5 +15,11 @@ namespace PersonaBlog.Repository
         {
             
         }
+
+        public void RequestAccepted(AcceptedRequests accepted)
+        {
+            accepted.AcceptedId = Guid.NewGuid().ToString();
+            Create(accepted);
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace PersonaBlog.Repository.Abstraction
             request.Id = Guid.NewGuid().ToString();
             Create(request);
         }
+
+        public void UpdateRequest(RequestsModel request)
+        {
+            Update(request);
+        }
     }
 }

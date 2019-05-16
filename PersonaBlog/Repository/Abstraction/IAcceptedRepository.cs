@@ -8,5 +8,6 @@ namespace PersonaBlog.Repository.Abstraction
 {
     public interface IAcceptedRepository : IRepositoryBase<AcceptedRequests>
     {
+        void RequestAccepted(AcceptedRequests accepted);
     }
 }

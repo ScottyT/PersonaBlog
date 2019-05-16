@@ -7,3 +7,12 @@ body .request {
 	max-width:250px;
 	width:100%;
 }
+body .request.card {
+	position:relative;
+}
+
+body .request.card input[type=checkbox] {
+	position:absolute;
+	bottom:15px;
+	right:15px;
+}

@@ -27,7 +27,7 @@ class RequestsPage extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		fetch('/api/requests', {
+		fetch('/api/requests/PostRequests', {
 			body: JSON.stringify(this.state),
 			cache: 'no-cache',
 			headers: {
