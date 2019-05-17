@@ -14,24 +14,12 @@ namespace PersonaBlog.Controllers
     public class UsersController : ControllerBase
     {
         private OktaClient client;
-        public UsersController()
-        {
-            client = new OktaClient(new OktaClientConfiguration
-            {
-                OktaDomain = "https://dev-616356.okta.com/",
-                Token = "00EEpK-7PR6vFh3tpqaiG_NBwjKeItSCTdilh-bQnW"
-            });
-        }
-        //public IActionResult Get()
-        //{
-        //    var user = client.Users.GetUserAsync()
-        //    return Ok(user);
-        //}
+       
         [HttpPost]
         public async void Post([FromBody]Registration reg)
         {
-            var oktaClient = new OktaClient();
-            var user = await oktaClient.Users.CreateUserAsync(
+            
+            var user = await client.Users.CreateUserAsync(
                 new CreateUserWithPasswordOptions
                 {
                     Profile = new UserProfile
